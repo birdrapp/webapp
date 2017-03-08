@@ -12,7 +12,6 @@ class SearchBar extends React.Component {
   throttledSearch = debounce(this.props.onSearch, 250);
 
   handleTextChange(e) {
-    e.persist();
     this.props.onTextInput(e.target.value);
     this.throttledSearch(e.target.value);
   }
