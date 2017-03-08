@@ -12,12 +12,17 @@ class BirdSearch extends React.Component {
       birds: []
     };
 
+    this.baseUrl = 'https://api.birdr.co.uk/v1/birds';
+
     this.handleTextChange = this.handleTextChange.bind(this);
   }
 
   async fetchBirds(filterText) {
     try {
-      const response = await fetch(`https://api.birdr.co.uk/v1/birds?q=${filterText}&perPage=10`);
+      let url = this.baseUrl + '?perPage=10';
+      if (filterText !== '') url += '&q=' + filterText;
+
+      const response = await fetch(url);
       const birds = await response.json();
       return birds.data;
     } catch (ex) {
@@ -27,10 +32,13 @@ class BirdSearch extends React.Component {
   }
 
   async handleTextChange(filterText) {
+    this.setState({
+      filterText: filterText
+    });
+
     const birds = await this.fetchBirds(filterText);
 
     this.setState({
-      filterText: filterText,
       birds: birds
     });
   }
