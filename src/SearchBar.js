@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Input } from 'semantic-ui-react'
+import { Form, Input } from 'semantic-ui-react';
+import { debounce } from 'lodash';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,8 +9,12 @@ class SearchBar extends React.Component {
     this.handleTextChange = this.handleTextChange.bind(this);
   }
 
+  throttledSearch = debounce(this.props.onSearch, 250);
+
   handleTextChange(e) {
+    e.persist();
     this.props.onTextInput(e.target.value);
+    this.throttledSearch(e.target.value);
   }
 
   render() {

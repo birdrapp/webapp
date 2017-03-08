@@ -1,6 +1,7 @@
 import React from 'react';
 import BirdTable from './BirdTable';
 import SearchBar from './SearchBar';
+import { Grid } from 'semantic-ui-react';
 import 'whatwg-fetch';
 
 class BirdSearch extends React.Component {
@@ -15,15 +16,17 @@ class BirdSearch extends React.Component {
     this.baseUrl = 'https://api.birdr.co.uk/v1/birds';
 
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   async fetchBirds(filterText) {
     try {
-      let url = this.baseUrl + '?perPage=10';
-      if (filterText !== '') url += '&q=' + filterText;
+      if (filterText === '') return [];
 
+      const url = `${this.baseUrl}?q=${filterText}&perPage=10`;
       const response = await fetch(url);
       const birds = await response.json();
+
       return birds.data;
     } catch (ex) {
       // How do we handle empty state
@@ -31,11 +34,13 @@ class BirdSearch extends React.Component {
     }
   }
 
-  async handleTextChange(filterText) {
+  handleTextChange(filterText) {
     this.setState({
       filterText: filterText
     });
+  }
 
+  async handleSearch(filterText) {
     const birds = await this.fetchBirds(filterText);
 
     this.setState({
@@ -46,8 +51,14 @@ class BirdSearch extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar filterText={this.state.filterText} onTextInput={this.handleTextChange} />
-        <BirdTable birds={this.state.birds} />
+        <Grid stackable>
+          <Grid.Column computer={4} tablet={6}>
+            <SearchBar filterText={this.state.filterText} onTextInput={this.handleTextChange} onSearch={this.handleSearch} />
+          </Grid.Column>
+          <Grid.Column computer={12} tablet={10}>
+            <BirdTable birds={this.state.birds} />
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }

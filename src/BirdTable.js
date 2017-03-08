@@ -1,6 +1,6 @@
 import React from 'react';
 import BirdRow from './BirdRow';
-import { Item } from 'semantic-ui-react';
+import { Item, Message } from 'semantic-ui-react';
 
 class BirdTable extends React.Component {
   render() {
@@ -10,11 +10,25 @@ class BirdTable extends React.Component {
         <BirdRow bird={bird} key={bird.id} />
       );
     });
-    return (
-      <Item.Group divided>
-        {rows}
-      </Item.Group>
-    );
+
+    if (rows.length === 0) {
+      return (
+        <Message size="large">
+          <Message.Header>
+            No birds found
+          </Message.Header>
+          <p>
+            Try searching with a different term.
+          </p>
+        </Message>
+      )
+    } else {
+      return (
+        <Item.Group divided>
+          {rows}
+        </Item.Group>
+      );
+    }
   }
 }
 
