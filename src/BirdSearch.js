@@ -17,7 +17,7 @@ class BirdSearch extends React.Component {
 
   async fetchBirds(filterText) {
     try {
-      const response = await fetch('https://api.birdr.co.uk/v1/birds?perPage=10');
+      const response = await fetch(`https://api.birdr.co.uk/v1/birds?q=${filterText}&perPage=10`);
       const birds = await response.json();
       return birds.data;
     } catch (ex) {
