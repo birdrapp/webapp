@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import { debounce } from 'lodash';
 
 class SearchBar extends React.Component {
@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <Form size="large">
-        <Form.Field control={Input} placeholder="Search..." value={this.props.filterText} onChange={this.handleTextChange} />
+        <Form.Input icon='search' loading={this.props.loading} placeholder="Search..." value={this.props.filterText} onChange={this.handleTextChange} />
       </Form>
     );
   }

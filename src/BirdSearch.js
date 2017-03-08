@@ -10,7 +10,8 @@ class BirdSearch extends React.Component {
 
     this.state = {
       filterText: '',
-      birds: []
+      birds: [],
+      loading: false
     };
 
     this.baseUrl = 'https://api.birdr.co.uk/v1/birds';
@@ -36,6 +37,7 @@ class BirdSearch extends React.Component {
 
   handleTextChange(filterText) {
     this.setState({
+      loading: true,
       filterText: filterText
     });
   }
@@ -44,7 +46,8 @@ class BirdSearch extends React.Component {
     const birds = await this.fetchBirds(filterText);
 
     this.setState({
-      birds: birds
+      birds: birds,
+      loading: false
     });
   }
 
@@ -53,7 +56,7 @@ class BirdSearch extends React.Component {
       <div>
         <Grid stackable>
           <Grid.Column computer={4} tablet={6}>
-            <SearchBar filterText={this.state.filterText} onTextInput={this.handleTextChange} onSearch={this.handleSearch} />
+            <SearchBar filterText={this.state.filterText} loading={this.state.loading} onTextInput={this.handleTextChange} onSearch={this.handleSearch} />
           </Grid.Column>
           <Grid.Column computer={12} tablet={10}>
             <BirdTable birds={this.state.birds} />
