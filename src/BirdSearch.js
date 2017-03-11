@@ -14,7 +14,7 @@ class BirdSearch extends React.Component {
       loading: false
     };
 
-    this.baseUrl = 'https://api.birdr.co.uk/v1/birds';
+    this.baseUrl = 'https://api.birdr.co.uk/birds';
 
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
