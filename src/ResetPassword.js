@@ -9,26 +9,14 @@ export default () => {
         <Grid.Row>
           <Grid.Column computer="5" />
           <Grid.Column width="16" computer="6">
-            <Header as="h1">Sign up</Header>
+            <Header as="h1">Reset password</Header>
             <Form>
-              <Form.Field>
-                <label>First name</label>
-                <input placeholder="First name" required />
-              </Form.Field>
-              <Form.Field>
-                <label>Last name</label>
-                <input placeholder="Last name" required />
-              </Form.Field>
               <Form.Field>
                 <label>Email</label>
                 <input type="email" placeholder="Email" required />
               </Form.Field>
-              <Form.Field>
-                <label>Password</label>
-                <input type="password" required />
-              </Form.Field>
               <Button type="submit" primary fluid>
-                Sign up
+                Reset password
               </Button>
             </Form>
           </Grid.Column>

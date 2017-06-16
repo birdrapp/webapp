@@ -6,7 +6,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
-import PasswordReset from './PasswordReset';
+import ResetPassword from './ResetPassword';
 import NotFound from './NotFound';
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
               <Route path="/sign-up" component={SignUp} />
               <Route path="/profile" component={Profile} />
               <Route path="/profile/edit" component={EditProfile} />
-              <Route path="/password-reset" component={PasswordReset} />
+              <Route path="/reset-password" component={ResetPassword} />
               <Route component={NotFound} />
             </Switch>
           </Container>
