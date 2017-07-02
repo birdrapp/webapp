@@ -8,7 +8,7 @@ export default () => {
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column width="0" computer="4" />
+          <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">
             <Header as="h1">Sign in</Header>
             <Form>

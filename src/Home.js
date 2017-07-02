@@ -9,13 +9,13 @@ export default () => {
     <div>
       <Grid columns={16}>
         <Grid.Row>
-          <Grid.Column width="0" computer="4" />
+          <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">
             <img src={logo} alt="Birdr" className="Logo" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width="0" computer="4" />
+          <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">
             <p>
               <Button primary size="large" fluid as={Link} to="/sign-up">
