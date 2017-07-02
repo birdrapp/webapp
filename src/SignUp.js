@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Form, Button, Header, Message } from 'semantic-ui-react';
+import { Grid, Form, Button, Header, Message, Label } from 'semantic-ui-react';
 import './Home.css';
 import * as api from './api';
 import { Redirect } from 'react-router-dom';
@@ -14,7 +14,8 @@ export default class SignUp extends Component {
       password: null,
       error: null,
       isLoading: false,
-      success: false
+      success: false,
+      errors: {}
     };
   }
 
@@ -32,18 +33,26 @@ export default class SignUp extends Component {
       await api.signUp({ firstName, lastName, email, password });
       this.setState({ error: null, isLoading: false, success: true });
     } catch (err) {
-      this.setState({ error: err.message, isLoading: false });
+      if (err.body && err.body.errors) {
+        this.setState({ errors: err.body.errors, isLoading: false });
+      } else {
+        this.setState({ error: err.message, isLoading: false });
+      }
     }
   };
 
   renderError() {
-    if (this.state.error) {
-      return (
-        <Message negative>Something went wrong. Please try again.</Message>
-      );
-    }
+    if (!this.state.error) return null;
 
-    return null;
+    return <Message negative>Something went wrong. Please try again.</Message>;
+  }
+
+  renderValidationError(field, name) {
+    const errors = this.state.errors[field];
+
+    if (!errors) return null;
+
+    return <Label pointing color="red" basic>{name} {errors[0]}</Label>;
   }
 
   render() {
@@ -66,6 +75,7 @@ export default class SignUp extends Component {
                     name="firstName"
                     onChange={event => this.handleChange(event)}
                   />
+                  {this.renderValidationError('first_name', 'First name')}
                 </Form.Field>
                 <Form.Field>
                   <label>Last name</label>
@@ -75,6 +85,7 @@ export default class SignUp extends Component {
                     name="lastName"
                     onChange={event => this.handleChange(event)}
                   />
+                  {this.renderValidationError('last_name', 'Last name')}
                 </Form.Field>
                 <Form.Field>
                   <label>Email</label>
@@ -85,6 +96,7 @@ export default class SignUp extends Component {
                     name="email"
                     onChange={event => this.handleChange(event)}
                   />
+                  {this.renderValidationError('email', 'Email address')}
                 </Form.Field>
                 <Form.Field>
                   <label>Password</label>
@@ -94,6 +106,7 @@ export default class SignUp extends Component {
                     name="password"
                     onChange={event => this.handleChange(event)}
                   />
+                  {this.renderValidationError('password', 'Password')}
                 </Form.Field>
                 <Button
                   type="submit"
