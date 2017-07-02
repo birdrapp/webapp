@@ -1,25 +1,31 @@
-import {
-  createFetch,
-  base,
-  accept,
-  parse,
-  createStack,
-  method,
-  json
-} from 'http-client';
-
 const baseUrl =
   process.env.REACT_APP_API_BASE_URL ||
   'https://birdrapi-staging.herokuapp.com';
 
-const common = createStack(
-  base(baseUrl),
-  accept('application/json'),
-  parse('json')
-);
+const request = async (path, opts) => {
+  const res = await fetch(baseUrl + path, opts);
+  const body = await res.json();
 
-export const signUp = async data => {
-  const fetch = createFetch(common, method('POST'), json(data));
+  if (!res.ok) {
+    const err = new Error(`HTTP Error ${res.status}`);
+    err.status = res.status;
+    err.body = body;
+    throw err;
+  }
 
-  return fetch('/users');
+  return body;
 };
+
+const post = async (path, body) => {
+  const opts = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  };
+
+  return request(path, opts);
+};
+
+export const signUp = async data => post('/users', data);
