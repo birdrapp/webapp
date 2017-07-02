@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Menu, Button, Container } from 'semantic-ui-react';
+import { Menu, Button, Container, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import Icon from './icon.svg';
+import Logo from './icon.svg';
 import PropTypes from 'prop-types';
 
 class Header extends Component {
@@ -19,7 +19,10 @@ class Header extends Component {
     return (
       this.props.user &&
       <div>
-        <Button basic as={Link} to="/sign-out">Sign out</Button>
+        <Button basic as={Link} to="/profile" color="blue">
+          <Icon name="user circle outline" />
+          {this.props.user.firstName}
+        </Button>
       </div>
     );
   }
@@ -29,7 +32,7 @@ class Header extends Component {
       <Menu borderless style={{ borderRadius: 0, border: 0 }}>
         <Container>
           <Menu.Item as={Link} to="/">
-            <img src={Icon} alt="Birdr" width="40" />
+            <img src={Logo} alt="Birdr" width="40" />
           </Menu.Item>
           <Menu.Item position="right">
             {this.renderUnauthenicatedLinks()}
