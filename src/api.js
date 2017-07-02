@@ -1,3 +1,5 @@
+import { getToken } from './token';
+
 const baseUrl =
   process.env.REACT_APP_API_BASE_URL ||
   'https://birdrapi-staging.herokuapp.com';
@@ -28,4 +30,17 @@ const post = async (path, body) => {
   return request(path, opts);
 };
 
+const get = async path => {
+  const token = getToken();
+  const opts = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
+
+  return request(path, opts);
+};
+
 export const signUp = async data => post('/users', data);
+export const signIn = async data => post('/tokens', data);
+export const getUser = async data => get('/user', data);

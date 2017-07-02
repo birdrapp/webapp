@@ -49,7 +49,6 @@ export default class SignUp extends Component {
 
   renderValidationError(field, name) {
     const errors = this.state.errors[field];
-
     if (!errors) return null;
 
     return <Label pointing color="red" basic>{name} {errors[0]}</Label>;
