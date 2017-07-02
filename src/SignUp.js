@@ -113,6 +113,7 @@ export default class SignUp extends Component {
                   primary
                   fluid
                   size="large"
+                  loading={this.state.isLoading}
                   disabled={this.state.isLoading}
                 >
                   Sign up
