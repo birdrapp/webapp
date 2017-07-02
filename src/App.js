@@ -8,12 +8,14 @@ import Profile from './Profile';
 import EditProfile from './EditProfile';
 import ResetPassword from './ResetPassword';
 import NotFound from './NotFound';
+import Header from './Header';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
+          <Header />
           <Container>
             <Switch>
               <Route exact path="/" component={Home} />

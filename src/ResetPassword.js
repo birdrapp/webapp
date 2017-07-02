@@ -7,15 +7,15 @@ export default () => {
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column computer="5" />
-          <Grid.Column width="16" computer="6">
+          <Grid.Column width="0" computer="4" />
+          <Grid.Column width="16" computer="8">
             <Header as="h1">Reset password</Header>
             <Form>
               <Form.Field>
                 <label>Email</label>
                 <input type="email" placeholder="Email" required />
               </Form.Field>
-              <Button type="submit" primary fluid>
+              <Button type="submit" primary fluid size="large">
                 Reset password
               </Button>
             </Form>

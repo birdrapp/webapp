@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Form, Button, Header } from 'semantic-ui-react';
+import { Grid, Form, Button, Header, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
@@ -8,8 +8,8 @@ export default () => {
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column computer="5" />
-          <Grid.Column width="16" computer="6">
+          <Grid.Column width="0" computer="4" />
+          <Grid.Column width="16" computer="8">
             <Header as="h1">Sign in</Header>
             <Form>
               <Form.Field>
@@ -20,12 +20,16 @@ export default () => {
                 <label>Password</label>
                 <input type="password" required />
               </Form.Field>
-              <Button type="submit" primary fluid>
-                Sign in
-              </Button>
               <p>
-                <Link to="/reset-password">Forgotten your password?</Link>
+                <Button type="submit" primary fluid size="large">
+                  Sign in
+                </Button>
               </p>
+              <Container textAlign="center">
+                <p>
+                  <Link to="/reset-password">Forgotten your password?</Link>
+                </p>
+              </Container>
             </Form>
           </Grid.Column>
         </Grid.Row>

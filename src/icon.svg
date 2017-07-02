@@ -1,0 +1,16 @@
+<svg width="302" height="259" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <svg id="a1481646502431" viewBox="0 0 100 100" y="0px" x="0px" height="50px" width="50px" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <path id="svg_1" d="m68.377,71.031l-9.186,-24.232l35.727,-24.934l-46.026,9.318l-2.953,-1.46l-2.131,-3.341l-1.475,-9.541l-3.384,-3.975l-6.081,-1.455l-7.219,2.142l-20.568,-1.65l19.832,5.88l5.583,11.813l5.136,18.275l26.186,27.187l9.244,13.529l-2.84,-11.379l7.578,6.687l-7.423,-12.864zm-34.233,-54.121l-1.288,-0.272l-0.409,-1.252l0.88,-0.979l1.289,0.272l0.408,1.252l-0.88,0.979z"/>
+  </svg>
+  <!--?xml version="1.0"?-->
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="261" width="304" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <use transform="matrix(6.626419518031127,0,0,6.626419518031127,-1035.7540951111275,-28.596490412826334) " y="-1.056377" x="154.094534" stroke="#2980b9" fill="#2980b9" xlink:href="#a1481646502431" id="SvgjsUse1076"/>
+ </g>
+</svg>
