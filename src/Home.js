@@ -3,11 +3,14 @@ import { Button, Grid } from 'semantic-ui-react';
 import './Home.css';
 import logo from './logo.svg';
 import { Link } from 'react-router-dom';
+import BirdList from './BirdList';
 
-export default () => {
+export default ({ user }) => {
+  if (user) return <BirdList user={user} />;
+
   return (
     <div>
-      <Grid columns={16}>
+      <Grid>
         <Grid.Row>
           <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">

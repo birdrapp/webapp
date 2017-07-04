@@ -39,13 +39,15 @@ class App extends Component {
   }
 
   render() {
+    const { user } = this.state;
+
     return (
       <Router>
         <div>
-          <Header user={this.state.user} />
+          <Header user={user} />
           <Container>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={() => <Home user={user} />} />
               <Route
                 path="/sign-in"
                 render={() => <SignIn setUser={user => this.setUser(user)} />}

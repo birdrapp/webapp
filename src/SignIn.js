@@ -63,7 +63,7 @@ export default class SignIn extends Component {
   };
 
   render() {
-    if (this.state.success) return <Redirect push to="/birds" />;
+    if (this.state.success) return <Redirect push to="/" />;
 
     return (
       <div>

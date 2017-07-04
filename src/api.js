@@ -42,5 +42,9 @@ const get = async path => {
 };
 
 export const signUp = async data => post('/users', data);
+
 export const signIn = async data => post('/tokens', data);
-export const getUser = async data => get('/user', data);
+
+export const getUser = async () => get('/user');
+
+export const getBirdList = async () => get('/user/bird_list');
