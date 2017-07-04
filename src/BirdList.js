@@ -25,7 +25,7 @@ export default class BirdList extends Component {
 
   async toggleBird(birdId, seen) {
     const results = this.state.results.map(result => {
-      if (result.seen) {
+      if (result.bird.id === birdId) {
         return { ...result, seen: !seen };
       } else {
         return result;
@@ -49,7 +49,7 @@ export default class BirdList extends Component {
                 <List.Item key={bird.id}>
                   <List.Content floated="right">
                     <Checkbox
-                      defaultChecked={seen}
+                      checked={seen}
                       onChange={() => this.toggleBird(bird.id, seen)}
                     />
                   </List.Content>
