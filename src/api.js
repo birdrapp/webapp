@@ -1,8 +1,10 @@
 import { getToken } from './token';
+import runtimeEnv from '@mars/heroku-js-runtime-env';
+
+const env = runtimeEnv();
 
 const baseUrl =
-  process.env.REACT_APP_API_BASE_URL ||
-  'https://birdrapi-staging.herokuapp.com';
+  env.REACT_APP_API_BASE_URL || 'https://birdrapi-staging.herokuapp.com';
 
 const request = async (path, opts) => {
   const res = await fetch(baseUrl + path, opts);
