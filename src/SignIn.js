@@ -41,10 +41,9 @@ export default class SignIn extends Component {
     const { email, password } = this.state;
 
     try {
-      const { token } = await api.signIn({ email, password });
+      const { token, user } = await api.signIn({ email, password });
       saveToken(token);
 
-      const user = await api.getUser();
       this.props.setUser(user);
 
       this.setState({ error: null, isLoading: false, success: true });
