@@ -18,16 +18,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      hasLoadedAuth: false
     };
   }
 
   componentDidMount = async () => {
     const token = getToken();
-    if (!token) return;
+
+    if (!token) {
+      this.setState({ hasLoadedAuth: true });
+      return;
+    }
 
     const user = await api.getUser();
-    this.setUser(user);
+
+    this.setState({
+      user,
+      hasLoadedAuth: true
+    });
   };
 
   setUser(user) {
@@ -38,31 +47,41 @@ class App extends Component {
     this.setState({ user: null });
   }
 
+  renderRoute() {
+    const { user, hasLoadedAuth } = this.state;
+
+    if (!hasLoadedAuth) return null;
+
+    return (
+      <Switch>
+        <Route exact path="/" render={() => <Home user={user} />} />
+        <Route
+          path="/sign-in"
+          render={() => <SignIn setUser={user => this.setUser(user)} />}
+        />
+        <Route path="/sign-up/success" component={SignUpSuccess} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route
+          path="/sign-out"
+          render={() => <SignOut clearUser={() => this.clearUser()} />}
+        />
+        <Route path="/profile" component={Profile} />
+        <Route path="/profile/edit" component={EditProfile} />
+        <Route path="/reset-password" component={ResetPassword} />
+        <Route component={NotFound} />
+      </Switch>
+    );
+  }
+
   render() {
-    const { user } = this.state;
+    const { user, hasLoadedAuth } = this.state;
 
     return (
       <Router>
         <div>
-          <Header user={user} />
+          <Header user={user} hasLoadedAuth={hasLoadedAuth} />
           <Container>
-            <Switch>
-              <Route exact path="/" render={() => <Home user={user} />} />
-              <Route
-                path="/sign-in"
-                render={() => <SignIn setUser={user => this.setUser(user)} />}
-              />
-              <Route path="/sign-up/success" component={SignUpSuccess} />
-              <Route path="/sign-up" component={SignUp} />
-              <Route
-                path="/sign-out"
-                render={() => <SignOut clearUser={() => this.clearUser()} />}
-              />
-              <Route path="/profile" component={Profile} />
-              <Route path="/profile/edit" component={EditProfile} />
-              <Route path="/reset-password" component={ResetPassword} />
-              <Route component={NotFound} />
-            </Switch>
+            {this.renderRoute()}
           </Container>
         </div>
       </Router>
