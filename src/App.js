@@ -13,6 +13,7 @@ import NotFound from './NotFound';
 import Header from './Header';
 import * as api from './api';
 import { getToken } from './token';
+import SignedInRoute from './SignedInRoute';
 
 class App extends Component {
   constructor(props) {
@@ -65,9 +66,13 @@ class App extends Component {
           path="/sign-out"
           render={() => <SignOut clearUser={() => this.clearUser()} />}
         />
-        <Route path="/profile" component={Profile} />
-        <Route path="/profile/edit" component={EditProfile} />
         <Route path="/reset-password" component={ResetPassword} />
+        <SignedInRoute path="/profile" component={Profile} user={user} />
+        <SignedInRoute
+          path="/profile/edit"
+          component={EditProfile}
+          user={user}
+        />
         <Route component={NotFound} />
       </Switch>
     );

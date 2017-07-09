@@ -34,7 +34,7 @@ class Header extends Component {
       <Menu borderless style={{ borderRadius: 0, border: 0 }}>
         <Container>
           <Menu.Item as={Link} to="/">
-            <img src={Logo} alt="Birdr" width="40" />
+            <img src={Logo} alt="Birdr" />
           </Menu.Item>
           <Menu.Item position="right">
             {this.renderUnauthenicatedLinks()}
