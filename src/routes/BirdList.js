@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import * as api from '../lib/api';
-import { PageHeader, Main } from '../ui';
+import { Heading, PageHeader } from '../ui';
 import { Container, Checkbox } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const ListWrapper = styled.div`
-  border-top: 1px solid #D5E6F1;
-  background-color: #fff;
-`;
-
 const List = styled.ul`
+  background-color: #fff;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -35,10 +31,6 @@ const ScientificName = styled.p`
   font-style: italic;
   color: #999;
   margin: 0;
-`;
-
-const CheckboxWrapper = styled.div`
-  float: right;
 `;
 
 export default class BirdList extends Component {
@@ -79,27 +71,27 @@ export default class BirdList extends Component {
 
     return (
       <div>
-        <Main slim>
-          <PageHeader>Your Bird List</PageHeader>
-        </Main>
-        <ListWrapper>
-          <Container>
-            <List>
-              {results.map(({ bird, seen }) => (
-                <ListItem key={bird.id}>
-                  <CheckboxWrapper>
-                    <Checkbox
-                      checked={seen}
-                      onChange={() => this.toggleBird(bird.id, seen)}
-                    />
-                  </CheckboxWrapper>
-                  <CommonName>{bird.commonName}</CommonName>
-                  <ScientificName>{bird.scientificName}</ScientificName>
-                </ListItem>
-              ))}
-            </List>
-          </Container>
-        </ListWrapper>
+        <PageHeader>
+          <Heading>Your Bird List</Heading>
+        </PageHeader>
+        <List>
+          {results.map(({ bird, seen }) => (
+            <ListItem key={bird.id}>
+              <Container>
+                <Checkbox
+                  checked={seen}
+                  onChange={() => this.toggleBird(bird.id, seen)}
+                  label={
+                    <label>
+                      <CommonName>{bird.commonName}</CommonName>
+                      <ScientificName>{bird.scientificName}</ScientificName>
+                    </label>
+                  }
+                />
+              </Container>
+            </ListItem>
+          ))}
+        </List>
       </div>
     );
   }

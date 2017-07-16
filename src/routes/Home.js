@@ -3,13 +3,13 @@ import { Image, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import BirdList from './BirdList';
-import { Main } from '../ui';
+import { Page } from '../ui';
 
 export default ({ user }) => {
   if (user) return <BirdList user={user} />;
 
   return (
-    <Main>
+    <Page>
       <Grid>
         <Grid.Row>
           <Grid.Column computer="4" />
@@ -34,6 +34,6 @@ export default ({ user }) => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Main>
+    </Page>
   );
 };

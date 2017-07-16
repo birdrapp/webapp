@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Form, Button, Message, Label } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import * as api from '../lib/api';
-import { Main, Card, PageHeader } from '../ui';
+import { Page, Card, Heading } from '../ui';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -58,12 +58,12 @@ export default class SignUp extends Component {
     if (this.state.success) return <Redirect push to="/sign-up/success" />;
 
     return (
-      <Main>
+      <Page>
         <Grid>
           <Grid.Row>
             <Grid.Column computer="4" />
             <Grid.Column width="16" computer="8">
-              <PageHeader>Sign up</PageHeader>
+              <Heading>Sign up</Heading>
               <Card>
                 {this.renderError()}
                 <Form onSubmit={event => this.handleSubmit(event)}>
@@ -122,7 +122,7 @@ export default class SignUp extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Main>
+      </Page>
     );
   }
 }

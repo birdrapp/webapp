@@ -3,7 +3,7 @@ import { Grid, Form, Button, Message } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import * as api from '../lib/api';
 import { saveToken, clearToken } from '../lib/token';
-import { Main, Card, PageHeader } from '../ui';
+import { Page, Card, Heading } from '../ui';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -58,12 +58,12 @@ export default class SignIn extends Component {
     if (this.state.success) return <Redirect push to="/" />;
 
     return (
-      <Main>
+      <Page>
         <Grid>
           <Grid.Row>
             <Grid.Column computer="4" />
             <Grid.Column width="16" computer="8">
-              <PageHeader>Sign in</PageHeader>
+              <Heading>Sign in</Heading>
               <Card>
                 {this.renderError()}
                 <Form onSubmit={event => this.handleSubmit(event)}>
@@ -105,7 +105,7 @@ export default class SignIn extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Main>
+      </Page>
     );
   }
 }

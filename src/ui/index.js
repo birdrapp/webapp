@@ -1,7 +1,8 @@
 import Card from './Card';
-import Main from './Main';
-import PageHeader from './PageHeader';
+import Page from './Page';
+import Heading from './Heading';
 import Header from './Header';
 import Footer from './Footer';
+import PageHeader from './PageHeader';
 
-export { Card, Main, PageHeader, Header, Footer };
+export { Card, Page, Heading, Header, Footer, PageHeader };

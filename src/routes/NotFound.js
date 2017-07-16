@@ -1,10 +1,10 @@
 import React from 'react';
-import { Main, PageHeader } from '../ui';
+import { Page, Heading } from '../ui';
 
 export default () => {
   return (
-    <Main>
-      <PageHeader>Not Found</PageHeader>
-    </Main>
+    <Page>
+      <Heading>Not Found</Heading>
+    </Page>
   );
 };

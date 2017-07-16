@@ -1,15 +1,15 @@
 import React from 'react';
 import { Grid, Form, Button } from 'semantic-ui-react';
-import { Main, PageHeader, Card } from '../ui';
+import { Page, Heading, Card } from '../ui';
 
 export default () => {
   return (
-    <Main>
+    <Page>
       <Grid>
         <Grid.Row>
           <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">
-            <PageHeader>Reset password</PageHeader>
+            <Heading>Reset password</Heading>
             <Card>
               <Form>
                 <Form.Field>
@@ -24,6 +24,6 @@ export default () => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Main>
+    </Page>
   );
 };

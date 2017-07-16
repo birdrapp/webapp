@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
   background-color: #FCFCFC;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e9e9e9;
   padding-top: 24px;
   padding-bottom: 24px;
   font-size: 14px;

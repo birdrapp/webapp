@@ -1,15 +1,15 @@
 import React from 'react';
 import { Message, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { Main, PageHeader, Card } from '../ui';
+import { Page, Heading, Card } from '../ui';
 
 export default () => (
-  <Main>
+  <Page>
     <Grid>
       <Grid.Row>
         <Grid.Column computer="4" />
         <Grid.Column width="16" computer="8">
-          <PageHeader>Sign up</PageHeader>
+          <Heading>Sign up</Heading>
           <Card>
             <Message positive>Your account was successfully created</Message>
             <Button as={Link} to="/sign-in" fluid primary>
@@ -19,5 +19,5 @@ export default () => (
         </Grid.Column>
       </Grid.Row>
     </Grid>
-  </Main>
+  </Page>
 );
