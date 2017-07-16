@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import Home from './Home';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import SignOut from './SignOut';
-import SignUpSuccess from './SignUpSuccess';
-import Profile from './Profile';
-import EditProfile from './EditProfile';
-import ResetPassword from './ResetPassword';
-import NotFound from './NotFound';
-import Header from './Header';
-import * as api from './api';
-import { getToken } from './token';
-import SignedInRoute from './SignedInRoute';
+import Footer from './components/Footer';
+import Home from './routes/Home';
+import SignIn from './routes/SignIn';
+import SignUp from './routes/SignUp';
+import SignOut from './routes/SignOut';
+import SignUpSuccess from './routes/SignUpSuccess';
+import Profile from './routes/Profile';
+import EditProfile from './routes/EditProfile';
+import ResetPassword from './routes/ResetPassword';
+import NotFound from './routes/NotFound';
+import Header from './components/Header';
+import * as api from './lib/api';
+import { getToken } from './lib/token';
+import SignedInRoute from './components/SignedInRoute';
 
 class App extends Component {
   constructor(props) {
@@ -85,9 +85,8 @@ class App extends Component {
       <Router>
         <div>
           <Header user={user} hasLoadedAuth={hasLoadedAuth} />
-          <Container>
-            {this.renderRoute()}
-          </Container>
+          {this.renderRoute()}
+          <Footer />
         </div>
       </Router>
     );

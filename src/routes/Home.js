@@ -1,38 +1,39 @@
 import React from 'react';
-import { Button, Grid } from 'semantic-ui-react';
-import './Home.css';
-import logo from './logo.svg';
+import { Image, Button, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import logo from './logo.svg';
 import BirdList from './BirdList';
+import { Main } from '../ui';
 
 export default ({ user }) => {
   if (user) return <BirdList user={user} />;
 
   return (
-    <div>
+    <Main>
       <Grid>
         <Grid.Row>
           <Grid.Column computer="4" />
           <Grid.Column width="16" computer="8">
-            <img src={logo} alt="Birdr" className="Logo" />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column computer="4" />
-          <Grid.Column width="16" computer="8">
+            <Image
+              src={logo}
+              alt="Birdr"
+              className="Logo"
+              centered
+              height={275}
+            />
             <p>
-              <Button primary size="large" fluid as={Link} to="/sign-up">
+              <Button primary fluid as={Link} to="/sign-up">
                 Create an account
               </Button>
             </p>
             <p>
-              <Button fluid size="large" as={Link} to="sign-in">
+              <Button fluid as={Link} to="sign-in">
                 Already a member? Sign in
               </Button>
             </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </div>
+    </Main>
   );
 };

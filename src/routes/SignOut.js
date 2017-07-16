@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { clearToken } from './token';
+import { clearToken } from '../lib/token';
 
 export default class SignOut extends Component {
   constructor(props) {

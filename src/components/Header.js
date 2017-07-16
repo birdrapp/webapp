@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Button, Container, Icon } from 'semantic-ui-react';
+import { Button, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import Logo from './icon.svg';
 import PropTypes from 'prop-types';
+import LogoImage from './icon.svg';
+import * as ui from '../ui';
 
 class Header extends Component {
   renderUnauthenicatedLinks() {
@@ -31,17 +32,22 @@ class Header extends Component {
 
   render(props) {
     return (
-      <Menu borderless style={{ borderRadius: 0, border: 0 }}>
-        <Container>
-          <Menu.Item as={Link} to="/">
-            <img src={Logo} alt="Birdr" />
-          </Menu.Item>
-          <Menu.Item position="right">
-            {this.renderUnauthenicatedLinks()}
-            {this.renderAuthenicatedLinks()}
-          </Menu.Item>
-        </Container>
-      </Menu>
+      <ui.Header>
+        <ui.Header.Left>
+          <Link to="/">
+            <Image
+              src={LogoImage}
+              alt="Birdr"
+              height={30}
+              style={{ marginTop: '3px' }}
+            />
+          </Link>
+        </ui.Header.Left>
+        <ui.Header.Right>
+          {this.renderUnauthenicatedLinks()}
+          {this.renderAuthenicatedLinks()}
+        </ui.Header.Right>
+      </ui.Header>
     );
   }
 }

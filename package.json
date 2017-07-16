@@ -11,6 +11,7 @@
     "react-router-dom": "^4.1.1",
     "semantic-ui-css": "^2.2.10",
     "semantic-ui-react": "^0.67.0",
+    "styled-components": "^2.1.1",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
